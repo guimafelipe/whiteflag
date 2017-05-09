@@ -9,6 +9,7 @@ class EnemyTower:
         self.hp = 100
         self.range_base = range_base
         self.size = size
+        self.damage = 40
         self.color = color
         self.list_bullets = []
         self.cooldown = 0
@@ -38,6 +39,8 @@ class EnemyTower:
             self.list_bullets.append(bullet_temporary)
         self.cooldown = 2000
     
+    def TakeDamage(self,x): # Caso o Whiteflag seja atingido, ele perderá hp
+        self.hp -=x
 
     def Update(self, list_soldiers, gameDisplay):
         #atiro
@@ -67,5 +70,6 @@ class EnemyTower:
             for j in range(len(list_soldiers)): 
                 if 20 > (((self.list_bullets[i].x-list_soldiers[j].posx)**2 + (self.list_bullets[i].y-list_soldiers[j].posy)**2)**0.5):
                         print("Pew!!")
+                        list_soldiers[j].TakeDamage(self.damage)
                         self.list_bullets.pop(i)
                         break

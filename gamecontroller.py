@@ -81,8 +81,6 @@ class GameController:
 	def Update(self, screen):
 		self.getCommand()
 
-		for button in self.buttons:
-			button.Update(screen)
 
 		foundDead = True
 		while foundDead:
@@ -110,6 +108,10 @@ class GameController:
 			if self.white_flag.Got_End():
 				#game win
 				print("Win")
+
+		
+		for button in self.buttons:
+			button.Update(screen)
 
 	def Draw(self, screen):
 		for enemy in self.enemies:

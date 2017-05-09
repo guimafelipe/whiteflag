@@ -29,3 +29,6 @@ class WhiteFlag(PlayerUnit): # Cria a WhiteFlag
         if self.Is_Dead == False and self.Stop == False:
             self.Walk(coord)
             self.Draw(gameDisplay)
+        if self.i == len(coord) - 1:
+            self.GetEnd = True
+

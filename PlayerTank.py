@@ -67,7 +67,8 @@ class PlayerTank(PlayerUnit):
     
         else: # Estará movimentando
             self.Walk(coord)
-
+        if self.i == len(coord) - 1:
+            self.hp = -1
     
     def Start(self):
         self.Update()

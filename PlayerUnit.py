@@ -25,21 +25,19 @@ class PlayerUnit: # Terá funções comuns a todas as unidades do jogador
         
         # Primeiramente ele irá verificar se o centro do quadrado está suficiente próximo do próximo ponto da lista de coordenadas
         
-        if (self.i < len(coord)): # Enquanto tivermos pontos a atingir:
+        if (self.i < len(coord) - 1): # Enquanto tivermos pontos a atingir:
             
             if self.Verify_distance(self.epsilon, (self.posx, self.posy), coord[self.i + 1]):
                 self.i += 1 # O quadrado irá se mover em direcao ao proximo ponto da lista
             
         # Criando o vetor direção unitário
-            self.dir_x = (coord[self.i + 1][0] - self.posx)/self.Distance(coord[self.i + 1],(self.posx,self.posy))
-            self.dir_y = (coord[self.i + 1][1] - self.posy)/self.Distance(coord[self.i + 1],(self.posx,self.posy))
-        
-            self.posx = self.posx + self.speed * self.dir_x
-            self.posy = self.posy + self.speed * self.dir_y
+            if (self.i < len(coord) -1):
+                self.dir_x = (coord[self.i + 1][0] - self.posx)/self.Distance(coord[self.i + 1],(self.posx,self.posy))
+                self.dir_y = (coord[self.i + 1][1] - self.posy)/self.Distance(coord[self.i + 1],(self.posx,self.posy))
+            
+                self.posx = self.posx + self.speed * self.dir_x
+                self.posy = self.posy + self.speed * self.dir_y
 
-        elif self.i == len(coord):
-            self.hp = -1
-            print("entor ass")
 
     def Stop(self, list_of_something):
         pass

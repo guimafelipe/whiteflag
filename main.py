@@ -27,8 +27,6 @@ while True:
             exit()
     pressed_keys = pygame.key.get_pressed()
 
-    if pressed_keys[K_SPACE]:
-    	gcontroller.sendWhiteFlag()
     screen.blit(background, (0, 0))
     gcontroller.Update(screen)
     gcontroller.Draw(screen)

@@ -14,6 +14,7 @@ class PlayerTower(PlayerUnit):
         self.size = 30
         self.color = (0,0,225) #Blue
         self.speed = 3
+        self.damage = 40
         self.list_bullets = []
         self.cooldown = 0 # Copiei do Uchida, não sei o que isso faz kk
         self.Awake(coord)
@@ -83,11 +84,14 @@ class PlayerTower(PlayerUnit):
                 for j in range(len(list_of_enemies)): 
                     if 20 > self.Distance((self.list_bullets[i].x,self.list_bullets[i].y),(list_of_enemies[j].x,list_of_enemies[j].y)):
                             print("Pew!!")
+                            list_of_enemies[j].TakeDamage(self.damage)
                             self.list_bullets.pop(i)
                             break
     
         else: # Estará movimentando
             self.Walk(coord)
+        if self.i == len(coord) - 1:
+            self.hp = -1
 
     
     def Start(self):

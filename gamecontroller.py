@@ -27,6 +27,9 @@ class GameController:
 		#createButtons()
 		for tank in self.mapLane.tankPositions:
 			self.createTank(tank[0], tank[1])
+		self.playerTankQnt = self.mapLane.playerTankQnt
+		self.playerTowerQnt = self.mapLane.playerTowerQnt
+
 
 	def createButtons(self):
 		pass
@@ -35,18 +38,23 @@ class GameController:
 		pass
 
 	def sendWhiteFlag(self):
-		white_flag = WhiteFlag(self.mapLane)
-		self.player.append(white_flag)
-		self.spawnedWhiteFlag = True
-		self.white_flag = white_flag
+		if not self.spawnedWhiteFlag:
+			white_flag = WhiteFlag(self.mapLane)
+			self.player.append(white_flag)
+			self.spawnedWhiteFlag = True
+			self.white_flag = white_flag
 
 	def sendPlayerTower(self):
-		player_tower = PlayerTower(self.mapLane)
-		self.player.append(player_tower)
+		if self.playerTowerQnt > 0:
+			player_tower = PlayerTower(self.mapLane)
+			self.player.append(player_tower)
+			self.playerTowerQnt -= 1
 
 	def sendPlayerTank(self):
-		player_tank = PlayerTank(self.mapLane)
-		self.player.append(player_tank)
+		if self.playerTankQnt > 0:
+			player_tank = PlayerTank(self.mapLane)
+			self.player.append(player_tank)
+			self.playerTankQnt -= 1
 
 	def createTower(self, x, y):
 		tower = EnemyTower(x,y)

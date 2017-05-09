@@ -17,6 +17,7 @@ class PlayerTank(PlayerUnit):
         self.cooldown = 500
         self.cooldown_explosion = 300
         self.already_exploded = False # Copiei do Uchida
+        self.range_base_explosion = 50
         self.Awake(coord)
         
     def Stop(self,list_of_enemies): #list_of_enemies contem as coordenadas de onde estao localizadas os inimigos 
@@ -43,7 +44,7 @@ class PlayerTank(PlayerUnit):
             n = len(list_of_enemies)
             for j in range(n):
                 if self.range_base_explosion >= self.Distance((list_of_enemies[j].x,list_of_enemies[j].y),(self.posx,self.posy)):      
-                    list_of_enemies[j].hp = list_of_enemies[j].hp - damage
+                    list_of_enemies[j].hp = list_of_enemies[j].hp - self.damage
     
     
 
@@ -54,7 +55,7 @@ class PlayerTank(PlayerUnit):
             if self.already_exploded == True:
                 self.cooldown -= 30
             if self.cooldown < 0:
-                Explosion(self, list_of_enemies, gameDisplay)
+                self.Explosion(list_of_enemies, gameDisplay)
             else:
                 #check range detection
                 n = len(list_of_enemies)

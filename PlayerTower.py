@@ -13,7 +13,7 @@ class PlayerTower(PlayerUnit):
         self.hp = 50 # Hp
         self.size = 30
         self.color = (0,0,225) #Blue
-        self.speed = 3 
+        self.speed = 3
         self.list_bullets = []
         self.cooldown = 0 # Copiei do Uchida, não sei o que isso faz kk
         self.Awake(coord)

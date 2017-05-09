@@ -10,6 +10,9 @@ class Map1:
 	# image = pygame.load_image()
 	towerPositions = [(540, 130)]
 	tankPositions = [(130, 640)]
+
+	playerTankQnt = 2
+	playerTowerQnt = 2
 	def getWayPoints(self):
 		return self.wayPoints
 

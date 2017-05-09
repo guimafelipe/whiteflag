@@ -1,11 +1,12 @@
 import pygame
 from bullet import *
 
-class Tower:
+class EnemyTower:
     
     def __init__(self, x=0, y=0, range_base=70, size=100, color="red"):
         self.x = x
         self.y = y
+        self.hp = 100
         self.range_base = range_base
         self.size = size
         self.color = color
@@ -16,6 +17,12 @@ class Tower:
         pygame.draw.rect(gameDisplay, (250,0,0), [self.x - self.size/2, self.y-self.size/2,self.size,self.size])
         for bullet in self.list_bullets:
             bullet.Draw(gameDisplay)
+
+    def Is_Dead(self):
+        if self.hp <= 0: # morreu
+            return True
+        else: # still breathing
+            return False
 
     def Shoot(self, list_soldiers, list_bullets):
         n = len(list_soldiers)

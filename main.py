@@ -16,8 +16,8 @@ screen = pygame.display.set_mode((956, 560), 0, 32)
 background_filename = 'background.png'
 background = pygame.image.load(background_filename).convert()
 
-level1master = Level1Controller()
-level1master.createTower(540, 330)
+gcontroller = GameController()
+##Okgcontroller.createTower(540, 330)
 
 clock = pygame.time.Clock()
 
@@ -28,10 +28,10 @@ while True:
     pressed_keys = pygame.key.get_pressed()
 
     if pressed_keys[K_SPACE]:
-    	level1master.sendWhiteFlag()
+    	gcontroller.sendWhiteFlag()
     screen.blit(background, (0, 0))
-    level1master.Update()
-    level1master.Draw(screen)
+    gcontroller.Update(screen)
+    gcontroller.Draw(screen)
 
     pygame.display.update()
     time_passed = clock.tick(30)

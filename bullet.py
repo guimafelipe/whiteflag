@@ -11,6 +11,12 @@ class Bullet:
         self.speed_y = speed_module*(y_soldier-y_base)/((x_soldier-x_base)**2 + (y_soldier-y_base)**2)**0.5
         sprite_name = "cannonball.png"
         self.sprite = pygame.image.load(sprite_name).convert_alpha()
+
+    def __getitem__(self, index):
+        if index == 0:
+            return self.x
+        else:
+            return self.y
         
     def Draw(self, gameDisplay):
         # pygame.draw.rect(gameDisplay, self.color, [self.x, self.y,self.size,self.size])

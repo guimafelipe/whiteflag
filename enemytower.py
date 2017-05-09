@@ -41,6 +41,7 @@ class EnemyTower:
     
     def TakeDamage(self,x): # Caso o Whiteflag seja atingido, ele perderá hp
         self.hp -=x
+        print("tomei dano e sou torre do mau")
 
     def Update(self, list_soldiers, gameDisplay):
         #atiro

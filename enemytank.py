@@ -6,7 +6,7 @@ class EnemyTank:
         self.size = 50
         self.hp = 100
         self.damage = 70
-        self.color = (0,0,0)
+        self.color = (0,125,0)
         self.x = x
         self.y = y
         self.range_base_detection = 70
@@ -25,6 +25,9 @@ class EnemyTank:
         else: # still breathing
             return False
     
+    def TakeDamage(self,x): # Caso o Whiteflag seja atingido, ele perderá hp
+        self.hp -=x
+
     def Explosion(self, list_soldiers, gameDisplay):
         if self.cooldown_explosion > 0:
             self.cooldown_explosion -= 30
@@ -35,13 +38,13 @@ class EnemyTank:
             n = len(list_soldiers)
             for j in range(n):
                 if self.range_base_explosion >= (((list_soldiers[j].posx-self.x)**2 + (list_soldiers[j].posy-self.y)**2)**0.5):      
-                    list_soldiers[j].hp = list_soldiers[j].hp - damage
+                    list_soldiers[j].hp = list_soldiers[j].hp - self.damage
     
     def Update(self, list_soldiers, gameDisplay):
         if self.already_exploded:
             self.cooldown -= 30
             if self.cooldown < 0:
-                Explosion(self, list_soldiers, gameDisplay)
+                self.Explosion(list_soldiers, gameDisplay)
         else:
             #check range detection
             n = len(list_soldiers)

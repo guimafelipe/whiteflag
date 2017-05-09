@@ -8,6 +8,7 @@ class PlayerTower(PlayerUnit):
     
     
     def __init__(self,coord):
+        self.Awake(coord)
         self.epsilon = 10 # Range para o jogador mudar em direção à próxima coordenada do mapa
         self.epsilon2 = 150 # Range o qual o jogador que está caminhando irá parar caso fique a uma distância <20 de um dos enemies
         self.hp = 50 # Hp
@@ -17,7 +18,7 @@ class PlayerTower(PlayerUnit):
         self.damage = 40
         self.list_bullets = []
         self.cooldown = 0 # Copiei do Uchida, não sei o que isso faz kk
-        self.Awake(coord)
+        
         
     def Stop(self,list_of_enemies): #list_of_enemies contem as coordenadas de onde estao localizadas os inimigos 
         inimigo_proximo = False

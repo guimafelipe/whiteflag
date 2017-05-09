@@ -23,14 +23,13 @@ class GameController:
 
 	def __init__(self):
 		self.mapLane = Map1()
-		for tower in self.mapLane.towerPositions:
-			self.createTower(tower[0], tower[1])
+		#for tower in self.mapLane.towerPositions:
+			#self.createTower(tower[0], tower[1])
 		self.createButtons()
 		for tank in self.mapLane.tankPositions:
 			self.createTank(tank[0], tank[1])
 		self.playerTankQnt = self.mapLane.playerTankQnt
 		self.playerTowerQnt = self.mapLane.playerTowerQnt
-
 
 	def createButtons(self):
 		self.button1 = Button(100, 500, 180, 90,  self.sendPlayerTower)
@@ -81,7 +80,6 @@ class GameController:
 	def Update(self, screen):
 		self.getCommand()
 
-
 		foundDead = True
 		while foundDead:
 			foundDead = False
@@ -108,13 +106,11 @@ class GameController:
 			if self.white_flag.Got_End():
 				#game win
 				print("Win")
-
 		
-		for button in self.buttons:
-			button.Update(screen)
-
 	def Draw(self, screen):
 		for enemy in self.enemies:
 			enemy.Draw(screen)
 		for unit in self.player:
 			unit.Draw(screen)
+		for button in self.buttons:
+			button.Update(screen)

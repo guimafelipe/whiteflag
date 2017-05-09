@@ -10,6 +10,7 @@ from PlayerTower import *
 from PlayerTank import *
 from enemytower import *
 from enemytank import *
+from button import *
 
 class GameController:
 	player = []
@@ -24,7 +25,7 @@ class GameController:
 		self.mapLane = Map1()
 		for tower in self.mapLane.towerPositions:
 			self.createTower(tower[0], tower[1])
-		#createButtons()
+		self.createButtons()
 		for tank in self.mapLane.tankPositions:
 			self.createTank(tank[0], tank[1])
 		self.playerTankQnt = self.mapLane.playerTankQnt
@@ -32,7 +33,11 @@ class GameController:
 
 
 	def createButtons(self):
-		pass
+		self.button1 = Button(100, 500, 180, 90,  self.sendPlayerTower)
+		self.button2 = Button(300, 500, 180, 90,  self.sendPlayerTank)
+		self.buttons = []
+		self.buttons.append(self.button1)
+		self.buttons.append(self.button2)
 
 	def getLevel(self, lvlNum):
 		pass
@@ -75,6 +80,9 @@ class GameController:
 
 	def Update(self, screen):
 		self.getCommand()
+
+		for button in self.buttons:
+			button.Update(screen)
 
 		foundDead = True
 		while foundDead:

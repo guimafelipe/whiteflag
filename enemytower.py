@@ -3,7 +3,7 @@ from bullet import *
 
 class EnemyTower:
     
-    def __init__(self, x=0, y=0, range_base=70, size=100, color="red"):
+    def __init__(self, x=0, y=0, range_base=200, size=100, color="red"):
         self.x = x
         self.y = y
         self.hp = 100
@@ -25,6 +25,27 @@ class EnemyTower:
         else: # still breathing
             return False
 
+    def Distance(self, x, y): # Calcula a distância entre dois pontos quaisquer x = (x1,x2) e y = (y1,y2)
+        return ((x[0]-y[0])**2 + (x[1]-y[1])**2)**0.5
+
+    def Verify_distance(self, criteria, x,y): # Verifica se dois pontos estão suficientemente próximos:
+        if self.Distance(x,y) < criteria: # Suficientemente próximos
+            return True
+        else:
+            return False
+
+    def CanShoot(self, list_of_soldiers): #list_of_enemies contem as coordenadas de onde estao localizadas os inimigos 
+        inimigo_proximo = False
+        n = len(list_of_soldiers)
+        for i in range (0,n): #Verificará se não há algum inimigo vivo próximo com relacao ao centro do jogador
+            if self.Verify_distance(self.range_base,(self.x,self.y),(list_of_soldiers[i].posx,list_of_soldiers[i].posy)):
+                #Guima, aqui eu encarei a list_of_enemies como a lista de objetos inimigos. Tem que ver se a posição deles
+                # é dada pelo .x e .y ali tbm (tem q ver no pgm do Uchida), além de verificar se a torre do Uchida tem
+                # o método Is_Dead (supus que tenha)
+                inimigo_proximo = True
+                
+        return inimigo_proximo
+
     def Shoot(self, list_soldiers, list_bullets):
         n = len(list_soldiers)
         if n>0:
@@ -45,7 +66,8 @@ class EnemyTower:
 
     def Update(self, list_soldiers, gameDisplay):
         #atiro
-        if self.cooldown <= 0:
+
+        if self.cooldown <= 0 and self.CanShoot(list_soldiers):
             self.Shoot(list_soldiers, self.list_bullets)
             self.cooldown = 2000
         else:

@@ -23,13 +23,15 @@ class GameController:
 
 	def __init__(self):
 		self.mapLane = Map1()
-		#for tower in self.mapLane.towerPositions:
-			#self.createTower(tower[0], tower[1])
+		for tower in self.mapLane.towerPositions:
+			self.createTower(tower[0], tower[1])
 		self.createButtons()
 		for tank in self.mapLane.tankPositions:
 			self.createTank(tank[0], tank[1])
 		self.playerTankQnt = self.mapLane.playerTankQnt
 		self.playerTowerQnt = self.mapLane.playerTowerQnt
+
+		self.commandTicker = 10
 
 	def createButtons(self):
 		self.button1 = Button(100, 500, 180, 90,  self.sendPlayerTower)
@@ -42,23 +44,26 @@ class GameController:
 		pass
 
 	def sendWhiteFlag(self):
-		if not self.spawnedWhiteFlag:
+		if not self.spawnedWhiteFlag and self.commandTicker < 0:
 			white_flag = WhiteFlag(self.mapLane)
 			self.player.append(white_flag)
 			self.spawnedWhiteFlag = True
 			self.white_flag = white_flag
+			self.commandTicker = 10
 
 	def sendPlayerTower(self):
-		if self.playerTowerQnt > 0:
+		if self.playerTowerQnt > 0 and self.commandTicker < 0:
 			player_tower = PlayerTower(self.mapLane)
 			self.player.append(player_tower)
 			self.playerTowerQnt -= 1
+			self.commandTicker = 10
 
 	def sendPlayerTank(self):
-		if self.playerTankQnt > 0:
+		if self.playerTankQnt > 0 and self.commandTicker < 0:
 			player_tank = PlayerTank(self.mapLane)
 			self.player.append(player_tank)
 			self.playerTankQnt -= 1
+			self.commandTicker = 10
 
 	def createTower(self, x, y):
 		tower = EnemyTower(x,y)
@@ -76,6 +81,7 @@ class GameController:
 			self.sendPlayerTower()
 		if pressed_keys[K_2]:
 			self.sendPlayerTank()
+		self.commandTicker -= 1
 
 	def Update(self, screen):
 		self.getCommand()

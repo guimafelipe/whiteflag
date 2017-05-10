@@ -11,8 +11,8 @@ class Map1:
 	towerPositions = [(540, 130)]
 	tankPositions = [(758, 250)]
 
-	playerTankQnt = 1
-	playerTowerQnt = 1
+	playerTankQnt = 3
+	playerTowerQnt = 3
 	def getWayPoints(self):
 		return self.wayPoints
 

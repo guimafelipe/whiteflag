@@ -19,6 +19,8 @@ class PlayerTank(PlayerUnit):
         self.cooldown_explosion = 700
         self.already_exploded = False # Copiei do Uchida
         self.range_base_explosion =  320
+        self.sprite_name = "green2.png"
+        self.sprite = pygame.image.load(self.sprite_name).convert_alpha()
        
         
     def Stop(self,list_of_enemies): #list_of_enemies contem as coordenadas de onde estao localizadas os inimigos 
@@ -73,3 +75,6 @@ class PlayerTank(PlayerUnit):
     
     def Start(self):
         self.Update()
+
+    def Draw(self,gameDisplay):
+        gameDisplay.blit(pygame.transform.scale(self.sprite, (self.size, self.size)), (self.Pos_x(), self.Pos_y()))

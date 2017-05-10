@@ -11,7 +11,7 @@ from mapa1 import *
 
 pygame.init()
 
-screen = pygame.display.set_mode((956, 560), 0, 32)
+screen = pygame.display.set_mode((956, 650), 0, 32)
 
 background_filename = 'background.png'
 background = pygame.image.load(background_filename).convert()

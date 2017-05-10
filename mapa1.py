@@ -8,8 +8,8 @@ from random import randrange
 class Map1:
 	wayPoints = [(108, 105), (108, 466), (317, 466), (317, 110), (758, 110), (758, 475)]
 	# image = pygame.load_image()
-	towerPositions = [(540, 130)]
-	tankPositions = [(758, 250)]
+	towerPositions = [(540, 110)]
+	tankPositions = [(755, 250)]
 
 	playerTankQnt = 3
 	playerTowerQnt = 3

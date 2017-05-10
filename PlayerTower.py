@@ -18,6 +18,8 @@ class PlayerTower(PlayerUnit):
         self.damage = 40
         self.list_bullets = []
         self.cooldown = 0 # Copiei do Uchida, não sei o que isso faz kk
+        self.sprite_name = "green1.png"
+        self.sprite = pygame.image.load(self.sprite_name).convert_alpha()
         
         
     def Stop(self,list_of_enemies): #list_of_enemies contem as coordenadas de onde estao localizadas os inimigos 
@@ -33,7 +35,8 @@ class PlayerTower(PlayerUnit):
         return inimigo_proximo
     
     def Draw(self,gameDisplay):
-        pygame.draw.rect(gameDisplay,self.color,[self.Pos_x(),self.Pos_y(),self.size,self.size])
+        #pygame.draw.rect(gameDisplay,self.color,[self.Pos_x(),self.Pos_y(),self.size,self.size])
+        gameDisplay.blit(pygame.transform.scale(self.sprite, (self.size, self.size)), (self.Pos_x(), self.Pos_y()))
         for bullet in self.list_bullets: # Copiei da parte do Uchida esse trecho tb
             bullet.Draw(gameDisplay)
             

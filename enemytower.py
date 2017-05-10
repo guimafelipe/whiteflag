@@ -8,16 +8,26 @@ class EnemyTower:
         self.y = y
         self.hp = 100
         self.range_base = range_base
-        self.size = size
+        self.size = 50
         self.damage = 40
         self.color = color
         self.list_bullets = []
         self.cooldown = 0
+        self.sprite_name = "red1.png"
+        self.sprite = pygame.image.load(self.sprite_name).convert_alpha()
     
     def Draw(self, gameDisplay):
-        pygame.draw.rect(gameDisplay, (250,0,0), [self.x - self.size/2, self.y-self.size/2,self.size,self.size])
+        #pygame.draw.rect(gameDisplay, (250,0,0), [self.x - self.size/2, self.y-self.size/2,self.size,self.size])
+        gameDisplay.blit(pygame.transform.scale(self.sprite, (self.size, self.size)), (self.Pos_x(), self.Pos_y()))
         for bullet in self.list_bullets:
             bullet.Draw(gameDisplay)
+
+    def Pos_x(self): # Queremos que a posicao utilizada seja com respeito ao canto superior esquerdo da unidade do jogador
+        return self.x - self.size/2
+    
+    
+    def Pos_y(self):
+        return self.y - self.size/2
 
     def Is_Dead(self):
         if self.hp <= 0: # morreu

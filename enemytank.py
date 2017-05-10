@@ -5,16 +5,16 @@ class EnemyTank:
     def __init__(self, x=0, y=0, range_base=70, size=100, color="red"):
         self.size = 50
         self.hp = 100
-        self.damage = 70
+        self.damage = 40
         self.color = (0,125,0)
         self.x = x
         self.y = y
-        self.range_base_detection = 70
+        self.range_base_detection = 100
         self.range_base_explosion = self.range_base_detection*1.5
         self.already_exploded = False
         self.isDead = False
-        self.cooldown = 700
-        self.cooldown_explosion = 500
+        self.cooldown = 400
+        self.cooldown_explosion = 300
         self.sprite_name = "red2.png"
         self.sprite = pygame.image.load(self.sprite_name).convert_alpha()
         self.showExplosion = False
@@ -71,4 +71,3 @@ class EnemyTank:
                     print("Enemy tank explosion!")
                     self.already_exploded = True
                     break
-        

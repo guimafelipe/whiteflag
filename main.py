@@ -28,6 +28,8 @@ pygame.mixer.music.load('theme.wav')
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(0.4)
 
+pygame.display.set_caption("White Flag")
+
 while True:
     for event in pygame.event.get():
         if event.type == QUIT:

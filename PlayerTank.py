@@ -9,16 +9,16 @@ class PlayerTank(PlayerUnit):
         self.Awake(coord)
         self.epsilon = 10 # Range para o jogador mudar em direção à próxima coordenada do mapa
         self.epsilon2 = 20 # Range o qual o jogador que está caminhando irá parar caso fique a uma distância <20 de um dos enemies
-        self.hp = 175200 # Hp
+        self.hp = 100 # Hp
         self.size = 30
         self.color = (0,225,0) #Green
         self.speed = 2.5
-        self.damage = 40 # Quanto de dano ela dá
-        self.damage_range = 200
+        self.damage = 30 # Quanto de dano ela dá
+        self.damage_range = 100
         self.cooldown = 300
         self.cooldown_explosion = 400
         self.already_exploded = False # Copiei do Uchida
-        self.range_base_explosion =  320
+        self.range_base_explosion =  self.damage_range*1.5
         self.sprite_name = "green2.png"
         self.sprite = pygame.image.load(self.sprite_name).convert_alpha()
         self.showExplosion = False

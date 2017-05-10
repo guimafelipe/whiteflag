@@ -62,7 +62,7 @@ class EnemyTank:
             #check range detection
             n = len(list_soldiers)
             for i in range(n):
-                if self.range_base_detection >= (((list_soldiers[i].posx-self.x)**2 + (list_soldiers[i].posy-self.y)**2)**0.5):  
+                if self.range_base_detection/2 >= (((list_soldiers[i].posx-self.x)**2 + (list_soldiers[i].posy-self.y)**2)**0.5):  
                     print("Enemy tank explosion!")
                     self.already_exploded = True
                     break

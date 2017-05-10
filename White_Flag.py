@@ -9,7 +9,7 @@ class WhiteFlag(PlayerUnit): # Cria a WhiteFlag
         self.hp = 10  # HP da WhiteFlag
         self.size = 40 # Tamanho da Whiteflag (lado do quadrado)
         self.color = (255,255,255) #Cor da Whiteflag
-        self.speed = 2 # Velocidade da whiteflag
+        self.speed = 8 # Velocidade da whiteflag
         
         self.GetEnd = False
         self.sprite_name = "white flag.png"

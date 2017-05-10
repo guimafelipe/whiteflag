@@ -29,9 +29,12 @@ class Manager:
 		self.lose = Lose(self)
 
 	def CreateLvl(self, index):
+		self.win.sou = 0
+		self.lose.sou = 0
 		if index >= len(self.mapArray):
 			self.MenuScene()
 		else:
+			print("lvl created")
 			self.gcontroller = GameController(self.mapArray[index])
 			self.currLvl = index
 			self.endedLvl = False

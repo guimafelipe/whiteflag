@@ -13,16 +13,13 @@ from enemytank import *
 from button import *
 
 class GameController:
-	player = []
-	enemies = []
-	spawnedWhiteFlag = False
-
-	level = 1
-
-	buttons = []
-
+	
 	def __init__(self, mapObj):
 		self.mapLane = mapObj
+		self.player = []
+		self.enemies = []
+		self.spawnedWhiteFlag = False
+		self.buttons = []
 		"""for tower in self.mapLane.towerPositions:
 			self.createTower(tower[0], tower[1])
 		

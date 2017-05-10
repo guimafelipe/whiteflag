@@ -14,7 +14,6 @@ class PlayerUnit: # Terá funções comuns a todas as unidades do jogador
     def Distance(self, x, y): # Calcula a distância entre dois pontos quaisquer x = (x1,x2) e y = (y1,y2)
         return ((x[0]-y[0])**2 + (x[1]-y[1])**2)**0.5
 
-    
     def Verify_distance(self, criteria, x,y): # Verifica se dois pontos estão suficientemente próximos:
         if self.Distance(x,y) < criteria: # Suficientemente próximos
             return True

@@ -48,7 +48,7 @@ class PlayerTank(PlayerUnit):
 
             n = len(list_of_enemies)
             for j in range(n):
-                if self.range_base_explosion >= self.Distance((list_of_enemies[j].x,list_of_enemies[j].y),(self.posx,self.posy)):      
+                if self.range_base_explosion/2 >= self.Distance((list_of_enemies[j].x,list_of_enemies[j].y),(self.posx,self.posy)):      
                     list_of_enemies[j].hp = list_of_enemies[j].hp - self.damage
     
     

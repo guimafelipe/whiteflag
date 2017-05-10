@@ -44,14 +44,14 @@ class PlayerTower(PlayerUnit):
         # Primeiro passo: Achar o inimigo mais próximo
         n = len(list_of_enemies)
         if n>0:
-            min_distance= self.Distance((list_of_enemies[0].x,list_of_enemies[0].y),(self.posx,self.posy))
+            min_distance = self.Distance((list_of_enemies[0].x,list_of_enemies[0].y),(self.posx,self.posy))
             ind = 0
             for i in range(1,n):
                 if self.Verify_distance(min_distance,(list_of_enemies[ind].x,list_of_enemies[ind].y),(self.posx,self.posy)):
                     min_distance = self.Distance((list_of_enemies[i].x,list_of_enemies[i].y),(self.posx,self.posy))
                     ind = i
             # Após achar, faz essa parada que tava no código do Uchida
-            
+
             bullet_temporary = Bullet(self.posx, self.posy, list_of_enemies[ind].x, list_of_enemies[ind].y)
             self.list_bullets.append(bullet_temporary)
             shoot_sound = pygame.mixer.Sound("shoot.wav")

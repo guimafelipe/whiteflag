@@ -29,9 +29,12 @@ class Manager:
 		self.lose = Lose(self)
 
 	def CreateLvl(self, index):
-		self.gcontroller = GameController(self.mapArray[index])
-		self.currLvl = index
-		self.endedLvl = False
+		if index >= len(self.mapArray):
+			self.MenuScene()
+		else:
+			self.gcontroller = GameController(self.mapArray[index])
+			self.currLvl = index
+			self.endedLvl = False
 
 	def Update(self, screen):
 		if self.onMenu:

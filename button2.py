@@ -9,7 +9,7 @@ black = (0, 0, 0)
 blue = (0,238,255)
 
 class Button2:
-	def __init__(self, x, y, w, h, action = None, ac = white, ic = black, image_name = "", size = 20):
+	def __init__(self, x, y, w, h, action = None, ac = white, ic = black, image_name = "", size = 20, argument = -1):
 		self.x = x
 		self.y = y
 		self.w = w
@@ -20,13 +20,17 @@ class Button2:
 		self.action = action
 		self.color = ic
 		self.sizefont = size
-        
+		self.argument = argument
+
 	def Update(self, gameDisplay):
 		if self.CheckMouse():
 			pygame.draw.rect(gameDisplay, self.ac, [self.x - self.w/2, self.y-self.h/2,self.w,self.h])
 			click = pygame.mouse.get_pressed()
 			if click[0] == 1 and self.action != None:
-				self.action()
+				if self.argument == -1:
+					self.action()
+				else:
+					self.action(self.argument)
 		else:
 			pygame.draw.rect(gameDisplay, self.ic, [self.x - self.w/2, self.y-self.h/2,self.w,self.h])
 

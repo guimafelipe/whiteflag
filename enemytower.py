@@ -68,6 +68,8 @@ class EnemyTower:
                     ind = i
             bullet_temporary = Bullet(self.x, self.y, list_soldiers[ind].posx, list_soldiers[ind].posy)
             self.list_bullets.append(bullet_temporary)
+            shoot_sound = pygame.mixer.Sound("shoot.wav")
+            pygame.mixer.Sound.play(shoot_sound)
         self.cooldown = 2000
     
     def TakeDamage(self,x): # Caso o Whiteflag seja atingido, ele perderá hp

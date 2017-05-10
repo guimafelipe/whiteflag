@@ -54,6 +54,8 @@ class PlayerTower(PlayerUnit):
             
             bullet_temporary = Bullet(self.posx, self.posy, list_of_enemies[ind].x, list_of_enemies[ind].y)
             self.list_bullets.append(bullet_temporary)
+            shoot_sound = pygame.mixer.Sound("shoot.wav")
+            pygame.mixer.Sound.play(shoot_sound)
         self.cooldown = 2000
     
 

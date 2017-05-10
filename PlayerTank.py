@@ -41,6 +41,8 @@ class PlayerTank(PlayerUnit):
         if self.cooldown_explosion > 0:
             self.cooldown_explosion -= 30
             pygame.draw.rect(gameDisplay, (163,54,38), [self.posx - self.damage_range/2, self.posy - self.damage_range/2,self.damage_range,self.damage_range])
+            sound = pygame.mixer.Sound("explosion.wav")
+            pygame.mixer.Sound.play(sound)
         else:
             self.hp = 0 # Está morto, Is_Dead
 

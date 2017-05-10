@@ -42,6 +42,8 @@ class EnemyTank:
         if self.cooldown_explosion > 0:
             pygame.draw.rect(gameDisplay, red, [self.x - self.range_base_explosion/2, self.y - self.range_base_explosion/2,self.range_base_explosion,self.range_base_explosion])
             self.cooldown_explosion -= 30
+            sound = pygame.mixer.Sound("explosion.wav")
+            pygame.mixer.Sound.play(sound)
         else:
             self.hp = 0
             

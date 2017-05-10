@@ -13,6 +13,7 @@ from enemytank import *
 from button import *
 from gamecontroller import *
 from win import *
+from lose import *
 
 class Manager:
 
@@ -24,7 +25,8 @@ class Manager:
 		self.endedLvl = True
 		self.onMenu = True
 		self.currLvl = 0
-		self.win = Win()
+		self.win = Win(self)
+		self.lose = Lose(self)
 
 	def CreateLvl(self, index):
 		self.gcontroller = GameController(self.mapArray[index])
@@ -52,6 +54,8 @@ class Manager:
 
 	def MenuScene(self):
 		menu_filename = "intro.jpg"
+		self.onMenu = True
+		self.currLvl = 0
 		self.menu_scene = pygame.image.load(menu_filename).convert()
 		self.screen.blit(self.menu_scene, (0, 0))
 
@@ -59,5 +63,5 @@ class Manager:
 		self.win.Execute(self.screen, self.gcontroller)
 
 	def LoseScene(self):
-		pass
+		self.lose.Execute(self.screen, self.gcontroller)
 

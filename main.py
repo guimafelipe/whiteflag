@@ -24,6 +24,10 @@ manager = Manager(screen)
 manager.CreateLvl(0)
 clock = pygame.time.Clock()
 
+pygame.mixer.music.load('theme.wav')
+pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(0.4)
+
 while True:
     for event in pygame.event.get():
         if event.type == QUIT:

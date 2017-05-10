@@ -20,11 +20,11 @@ class GameController:
 		self.enemies = []
 		self.spawnedWhiteFlag = False
 		self.buttons = []
-		"""for tower in self.mapLane.towerPositions:
+		for tower in self.mapLane.towerPositions:
 			self.createTower(tower[0], tower[1])
 		
 		for tank in self.mapLane.tankPositions:
-			self.createTank(tank[0], tank[1])"""
+			self.createTank(tank[0], tank[1])
 		
 		self.playerTankQnt = self.mapLane.playerTankQnt
 		self.playerTowerQnt = self.mapLane.playerTowerQnt

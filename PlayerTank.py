@@ -16,11 +16,12 @@ class PlayerTank(PlayerUnit):
         self.damage = 40 # Quanto de dano ela dá
         self.damage_range = 200
         self.cooldown = 300
-        self.cooldown_explosion = 700
+        self.cooldown_explosion = 400
         self.already_exploded = False # Copiei do Uchida
         self.range_base_explosion =  320
         self.sprite_name = "green2.png"
         self.sprite = pygame.image.load(self.sprite_name).convert_alpha()
+        self.showExplosion = False
        
         
     def Stop(self,list_of_enemies): #list_of_enemies contem as coordenadas de onde estao localizadas os inimigos 
@@ -61,6 +62,7 @@ class PlayerTank(PlayerUnit):
                 self.cooldown -= 30
             if self.cooldown < 0:
                 self.Explosion(list_of_enemies, gameDisplay)
+                self.showExplosion = True
             else:
                 #check range detection
                 n = len(list_of_enemies)
@@ -80,3 +82,6 @@ class PlayerTank(PlayerUnit):
 
     def Draw(self,gameDisplay):
         gameDisplay.blit(pygame.transform.scale(self.sprite, (self.size, self.size)), (self.Pos_x(), self.Pos_y()))
+        if self.showExplosion:
+            pygame.draw.rect(gameDisplay, (163,54,38), [self.posx - self.damage_range/2, self.posy - self.damage_range/2,self.damage_range,self.damage_range])
+            self.showExplosion = False

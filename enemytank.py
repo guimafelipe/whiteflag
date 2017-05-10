@@ -17,10 +17,14 @@ class EnemyTank:
         self.cooldown_explosion = 500
         self.sprite_name = "red2.png"
         self.sprite = pygame.image.load(self.sprite_name).convert_alpha()
+        self.showExplosion = False
         
     def Draw(self, gameDisplay):
         #pygame.draw.rect(gameDisplay, self.color, [self.x - self.size/2, self.y-self.size/2,self.size,self.size])
         gameDisplay.blit(pygame.transform.scale(self.sprite, (self.size, self.size)), (self.Pos_x(), self.Pos_y()))
+        if self.showExplosion:
+            pygame.draw.rect(gameDisplay, red, [self.x - self.range_base_explosion/2, self.y - self.range_base_explosion/2,self.range_base_explosion,self.range_base_explosion])
+            self.showExplosion = False
 
     def Is_Dead(self):
         if self.hp <= 0: # morreu
@@ -58,6 +62,7 @@ class EnemyTank:
             self.cooldown -= 30
             if self.cooldown < 0:
                 self.Explosion(list_soldiers, gameDisplay)
+                self.showExplosion = True
         else:
             #check range detection
             n = len(list_soldiers)

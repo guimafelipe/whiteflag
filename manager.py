@@ -22,6 +22,10 @@ class Manager:
 		self.mapArray = []
 		mapa = Map1()
 		self.mapArray.append(mapa)
+		mapa = Map2()
+		self.mapArray.append(mapa)
+		mapa = Map3()
+		self.mapArray.append(mapa)
 		self.endedLvl = True
 		self.onMenu = True
 		self.currLvl = 0
@@ -31,7 +35,11 @@ class Manager:
 	def CreateLvl(self, index):
 		self.win.sou = 0
 		self.lose.sou = 0
+		print(self.currLvl)
+		print(index)
+		print(len(self.mapArray))
 		if index >= len(self.mapArray):
+			print("chamou menu")
 			self.MenuScene()
 		else:
 			print("lvl created")

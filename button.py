@@ -37,8 +37,6 @@ class Button:
 		screen_qtd = font.render(str(self.qtd), True, blue)
 		gameDisplay.blit(screen_qtd,[self.x, self.y])
 
-
-
 	def CheckMouse(self):
 		mouse = pygame.mouse.get_pos()
 		

@@ -12,7 +12,7 @@ from enemytower import *
 from enemytank import *
 from button import *
 from gamecontroller import *
-
+from win import *
 
 class Manager:
 
@@ -24,6 +24,7 @@ class Manager:
 		self.endedLvl = True
 		self.onMenu = True
 		self.currLvl = 0
+		self.win = Win()
 
 	def CreateLvl(self, index):
 		self.gcontroller = GameController(self.mapArray[index])
@@ -55,7 +56,7 @@ class Manager:
 		self.screen.blit(self.menu_scene, (0, 0))
 
 	def WinScene(self):
-		pass
+		self.win.Execute(self.screen, self.gcontroller)
 
 	def LoseScene(self):
 		pass

@@ -35,7 +35,7 @@ class Button2:
 			pygame.draw.rect(gameDisplay, self.ic, [self.x - self.w/2, self.y-self.h/2,self.w,self.h])
 
 		font = pygame.font.SysFont(None,self.sizefont)
-		screen_text = font.render(self.image_name, True, blue)
+		screen_text = font.render(self.image_name, True, white)
 		gameDisplay.blit(screen_text,[self.x-self.sizefont*len(self.image_name)/6, self.y-self.sizefont/1.5])
 
 

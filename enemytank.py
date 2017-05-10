@@ -48,7 +48,7 @@ class EnemyTank:
             
             n = len(list_soldiers)
             for j in range(n):
-                if self.range_base_explosion >= (((list_soldiers[j].posx-self.x)**2 + (list_soldiers[j].posy-self.y)**2)**0.5):      
+                if self.range_base_explosion/2 >= (((list_soldiers[j].posx-self.x)**2 + (list_soldiers[j].posy-self.y)**2)**0.5):      
                     list_soldiers[j].hp = list_soldiers[j].hp - self.damage
     
     def Update(self, list_soldiers, gameDisplay):

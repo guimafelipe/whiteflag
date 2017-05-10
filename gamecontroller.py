@@ -21,8 +21,8 @@ class GameController:
 
 	buttons = []
 
-	def __init__(self):
-		self.mapLane = Map1()
+	def __init__(self, mapObj):
+		self.mapLane = mapObj
 		for tower in self.mapLane.towerPositions:
 			self.createTower(tower[0], tower[1])
 		
@@ -35,6 +35,9 @@ class GameController:
 		self.createButtons()
 		self.commandTicker = 10
 
+		self.hasLost = False
+		self.hasWon = False
+
 	def createButtons(self):
 		
 		self.button1 = Button(100, 600, 180, 90,  self.sendPlayerTower, image_name = 'Tower', qtd = self.playerTowerQnt)
@@ -44,8 +47,6 @@ class GameController:
 		self.buttons.append(self.button2)
 		self.buttons.append(self.button3)
 
-	def getLevel(self, lvlNum):
-		pass
 
 	def sendWhiteFlag(self):
 		if not self.spawnedWhiteFlag and self.commandTicker < 0:
@@ -116,11 +117,14 @@ class GameController:
 			if self.white_flag.Is_Dead():
 				#game lost
 				print("Lose")
+				self.hasLost = True
 			if self.white_flag.Got_End():
 				#game win
 				print("Win")
+				self.hasWon = True
 		
 	def Draw(self, screen):
+		self.mapLane.DrawBg(screen)
 		for enemy in self.enemies:
 			enemy.Draw(screen)
 		for unit in self.player:

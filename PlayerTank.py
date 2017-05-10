@@ -63,7 +63,7 @@ class PlayerTank(PlayerUnit):
                 #check range detection
                 n = len(list_of_enemies)
                 for i in range(n):
-                    if self.damage_range >= self.Distance((self.posx,self.posy),(list_of_enemies[i].x,list_of_enemies[i].y)):  
+                    if self.damage_range/2 >= self.Distance((self.posx,self.posy),(list_of_enemies[i].x,list_of_enemies[i].y)):  
                         print("Player tank explosion!")
                         self.already_exploded = True
                         break     
